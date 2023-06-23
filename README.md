@@ -54,8 +54,6 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
-
-
 ## Introduction
 
 This is a GitHub Action that can be used to transform strings in GitHub Actions.
