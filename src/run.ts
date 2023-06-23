@@ -19,6 +19,9 @@ export async function run() {
       case "kebabcase":
         outputString = kebabcase(inputString);
         break;
+      default:
+        core.error(`Invalid operation: ${operation}`)
+        core.setFailed(`Invalid operation: ${operation}`)
     }
 
     if (maxLenth > 0 && outputString.length > maxLenth) {

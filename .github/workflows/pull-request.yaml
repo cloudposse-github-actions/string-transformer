@@ -62,6 +62,14 @@ jobs:
           operation: 'kebabcase'
           input-string: 'Hello World'
           
+      - name: Test Action Invalid Operation
+        id: invalid-operation
+        uses: ./ # Uses an action in the root directory
+        continue-on-error: true
+        with:
+          operation: 'invalid-operation'
+          input-string: 'Hello World'
+          
       - name: Check Outputs
         if: ${{ steps.get_line_rate.outputs.lineRate < 0.9 }}
         uses: actions/github-script@v3
