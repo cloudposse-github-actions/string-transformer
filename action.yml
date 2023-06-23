@@ -2,10 +2,20 @@ name: "github-actions-string-transformer"
 description: "A helper for transforming strings in GitHub Actions"
 author: "Cloud Posse"
 inputs:
-  milliseconds:
+  operation:
     required: true
-    description: "input description here"
-    default: "200"
+    description: "Operation you would like to run on the string, valid values are: `lowercase`, `uppercase`, `kebabcase`, `dns-sanitize`"
+    default: "lowercase"
+  input-string:
+    required: true
+    description: "The string you'd like to perform the operation on"
+  max-length:
+    required: false
+    description: "The maximum length of the string, or -1 to not limit the length"
+    default: "-1"
+outputs: 
+  output-string:
+      description: "The transformed string"
 runs:
   using: "node16"
   main: "dist/index.js"
