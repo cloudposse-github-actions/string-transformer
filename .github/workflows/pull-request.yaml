@@ -45,7 +45,7 @@ jobs:
         id: lowercase
         uses: ./ # Uses an action in the root directory
         with:
-          operation: 'lowercasse'
+          operation: 'lowercase'
           input-string: 'Hello World'
           
       - name: Test Action UpperCase
