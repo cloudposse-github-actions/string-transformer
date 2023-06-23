@@ -2834,27 +2834,49 @@ __nccwpck_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(186);
-;// CONCATENATED MODULE: ./src/wait.ts
-async function wait(milliseconds) {
-    return new Promise((resolve) => {
-        if (isNaN(milliseconds)) {
-            throw new Error("milliseconds not a number");
-        }
-        setTimeout(() => resolve("done!"), milliseconds);
-    });
+;// CONCATENATED MODULE: ./src/operations/lowercase.ts
+function lowercase(str) {
+    return str.toLowerCase();
+}
+
+;// CONCATENATED MODULE: ./src/operations/uppercase.ts
+function uppercase(str) {
+    return str.toUpperCase();
+}
+
+;// CONCATENATED MODULE: ./src/operations/kebabcase.ts
+function kebabcase(str) {
+    return str.replace(/([a-z])([A-Z])/g, "$1-$2")
+        .replace(/[\s_]+/g, '-')
+        .toLowerCase();
 }
 
 ;// CONCATENATED MODULE: ./src/run.ts
 
 
+
+
 async function run() {
     try {
-        const ms = core.getInput("milliseconds");
-        core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-        core.debug(new Date().toTimeString());
-        await wait(parseInt(ms, 10));
-        core.debug(new Date().toTimeString());
-        core.setOutput("time", new Date().toTimeString());
+        const operation = core.getInput("operation");
+        const inputString = core.getInput("input-string");
+        const maxLenth = parseInt(core.getInput("max-length"), 10);
+        let outputString = "";
+        switch (operation) {
+            case "lowercase":
+                outputString = lowercase(inputString);
+                break;
+            case "uppercase":
+                outputString = uppercase(inputString);
+                break;
+            case "kebabcase":
+                outputString = kebabcase(inputString);
+                break;
+        }
+        if (maxLenth > 0 && outputString.length > maxLenth) {
+            outputString = outputString.substring(0, maxLenth);
+        }
+        core.setOutput("output-string", outputString);
     }
     catch (error) {
         if (error instanceof Error)
