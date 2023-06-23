@@ -61,6 +61,13 @@ jobs:
         with:
           operation: 'kebabcase'
           input-string: 'Hello World'
+      
+      - name: Test Action DNS Subdomain
+        id: dns-subdomain
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'dns-subdomain'
+          input-string: 'HelloWorldFromSomeReallyLongStringThatWillBeTruncatedUsingTheMaxLengthOption'
           
       - name: Test Action Invalid Operation
         id: invalid-operation
@@ -69,7 +76,7 @@ jobs:
         with:
           operation: 'invalid-operation'
           input-string: 'Hello World'
-          
+      
       - name: Check Outputs
         if: ${{ steps.get_line_rate.outputs.lineRate < 0.9 }}
         uses: actions/github-script@v3

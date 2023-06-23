@@ -4,7 +4,7 @@ author: "Cloud Posse"
 inputs:
   operation:
     required: true
-    description: "Operation you would like to run on the string, valid values are: `lowercase`, `uppercase`, `kebabcase`, `dns-sanitize`"
+    description: "Operation you would like to run on the string, valid values are: `lowercase`, `uppercase`, `kebabcase`, `dns-subdomain`"
     default: "lowercase"
   input-string:
     required: true
