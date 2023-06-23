@@ -65,14 +65,14 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            if(${{steps.lowercase.outputs.output-string}} != 'hello world') {
+            if(${{steps.lowercase.outputs.output-string}} !== 'hello world') {
               core.setFailed('Lowercase test failed')
             }
             
-            if(${{steps.uppercase.outputs.output-string}} != 'HELLO WORLD') {
+            if(${{steps.uppercase.outputs.output-string}} !== 'HELLO WORLD') {
               core.setFailed('Uppercase test failed')
             }
             
-            if(${{steps.kebabcase.outputs.output-string}} != 'hello-world') {
+            if(${{steps.kebabcase.outputs.output-string}} !== 'hello-world') {
               core.setFailed('Kebabcase test failed')
             }
