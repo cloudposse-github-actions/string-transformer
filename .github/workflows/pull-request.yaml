@@ -1,0 +1,78 @@
+name: Feature Branch
+on:
+  pull_request:
+    branches: [ 'dev', 'main' ]
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  pull-requests: write
+  deployments: write
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile --prefer-offline
+
+      - name: Linting
+        run: yarn lint
+
+      - name: Format Source Code
+        run: yarn format
+
+      - name: Unit Tests
+        run: yarn test
+
+      - name: Build
+        run: yarn build
+
+      - name: Test Action Lowercase
+        id: lowercase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'lowercasse'
+          input-string: 'Hello World'
+          
+      - name: Test Action UpperCase
+        id: uppercase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'uppercase'
+          input-string: 'Hello World'
+          
+      - name: Test Action Kebabcase
+        id: kebabcase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'kebabcase'
+          input-string: 'Hello World'
+          
+      - name: Check Outputs
+        if: ${{ steps.get_line_rate.outputs.lineRate < 0.9 }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+            if(${{steps.lowercase.outputs.output-string}} != 'hello world') {
+              core.setFailed('Lowercase test failed')
+            }
+            
+            if(${{steps.uppercase.outputs.output-string}} != 'HELLO WORLD') {
+              core.setFailed('Uppercase test failed')
+            }
+            
+            if(${{steps.kebabcase.outputs.output-string}} != 'hello-world') {
+              core.setFailed('Kebabcase test failed')
+            }
