@@ -1,0 +1,45 @@
+name: 1 - Feature Branch
+on:
+  pull_request:
+    branches: [ 'dev', 'main' ]
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  pull-requests: write
+  deployments: write
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
+
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile --prefer-offline
+
+      - name: Linting
+        run: yarn lint
+
+      - name: Format Source Code
+        run: yarn format
+
+      - name: Unit Tests
+        run: yarn test
+
+      - name: Build
+        run: yarn build
+
+      - name: Test Action Example
+        uses: ./ # Uses an action in the root directory
+        with:
+          milliseconds: '1000'

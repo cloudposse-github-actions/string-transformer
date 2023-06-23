@@ -1,5 +1,5 @@
-name: "github-actions-typescript-template"
-description: "A template for creating GitHub Actions in TypeScript"
+name: "github-actions-string-transformer"
+description: "A helper for transforming strings in GitHub Actions"
 author: "Cloud Posse"
 inputs:
   milliseconds:
