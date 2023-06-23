@@ -1,0 +1,11 @@
+name: "github-actions-typescript-template"
+description: "A template for creating GitHub Actions in TypeScript"
+author: "Cloud Posse"
+inputs:
+  milliseconds:
+    required: true
+    description: "input description here"
+    default: "200"
+runs:
+  using: "node16"
+  main: "dist/index.js"
