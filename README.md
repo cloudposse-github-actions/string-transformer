@@ -1,6 +1,6 @@
 
 <!-- markdownlint-disable -->
-# github-action-typescript-template [![Latest Release](https://img.shields.io/github/release/cloudposse/github-action-typescript-template.svg)](https://github.com/cloudposse/github-action-typescript-template/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+# github-action-string-transformer [![Latest Release](https://img.shields.io/github/release/cloudposse/github-action-string-transformer.svg)](https://github.com/cloudposse/github-action-string-transformer/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 <!-- markdownlint-restore -->
 
 [![README Header][readme_header_img]][readme_header_link]
@@ -28,7 +28,7 @@
 
 -->
 
-Template repo for GitHub Actions written in TypeScript
+A helper for transforming strings in GitHub Actions
 
 ---
 
@@ -54,11 +54,9 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
-
-
 ## Introduction
 
-This repo is a template for GitHub Actions written in TypeScript.
+This is a GitHub Action that can be used to transform strings in GitHub Actions.
 
 
 
@@ -66,10 +64,35 @@ This repo is a template for GitHub Actions written in TypeScript.
 
 ## Usage
 
+    ```yaml
+      - name: Action Lowercase
+        id: lowercase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'lowercase'
+          input-string: 'Hello World'
+          
+      - name: Action UpperCase
+        id: uppercase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'uppercase'
+          input-string: 'Hello World'
+          
+      - name: Action Kebabcase
+        id: kebabcase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'kebabcase'
+          input-string: 'Hello World'
+    ```
 
+Then Fetch the result with:
 
-Use this repository as a template in your own GitHub Action project to get started.
-
+     ```yaml
+        - name: Get the output
+          run: echo "The output was ${{ steps.lowercase.outputs.output-string }}"
+     ```  
 
 
 
@@ -81,7 +104,7 @@ Use this repository as a template in your own GitHub Action project to get start
 
 ## Share the Love
 
-Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/github-action-typescript-template)! (it helps us **a lot**)
+Like this project? Please give it a ★ on [our GitHub](https://github.com/cloudposse/github-action-string-transformer)! (it helps us **a lot**)
 
 Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
 
@@ -105,7 +128,7 @@ For additional context, refer to some of these links.
 
 **Got a question?** We got answers.
 
-File a GitHub [issue](https://github.com/cloudposse/github-action-typescript-template/issues), send us an [email][email] or join our [Slack Community][slack].
+File a GitHub [issue](https://github.com/cloudposse/github-action-string-transformer/issues), send us an [email][email] or join our [Slack Community][slack].
 
 [![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 
@@ -153,7 +176,7 @@ Sign up for [our newsletter][newsletter] that covers everything on our technolog
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/cloudposse/github-action-typescript-template/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/cloudposse/github-action-string-transformer/issues) to report any bugs or file feature requests.
 
 ### Developing
 
@@ -241,33 +264,33 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 [![Beacon][beacon]][website]
 <!-- markdownlint-disable -->
   [logo]: https://cloudposse.com/logo-300x69.svg
-  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=docs
-  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=website
-  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=github
-  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=jobs
-  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=hire
-  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=slack
-  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=linkedin
-  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=twitter
-  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=testimonial
-  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=office_hours
-  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=newsletter
-  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=discourse
-  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=email
-  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=commercial_support
-  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=we_love_open_source
-  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=terraform_modules
+  [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=docs
+  [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=website
+  [github]: https://cpco.io/github?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=github
+  [jobs]: https://cpco.io/jobs?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=jobs
+  [hire]: https://cpco.io/hire?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=hire
+  [slack]: https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=slack
+  [linkedin]: https://cpco.io/linkedin?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=linkedin
+  [twitter]: https://cpco.io/twitter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=twitter
+  [testimonial]: https://cpco.io/leave-testimonial?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=testimonial
+  [office_hours]: https://cloudposse.com/office-hours?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=office_hours
+  [newsletter]: https://cpco.io/newsletter?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=newsletter
+  [discourse]: https://ask.sweetops.com/?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=discourse
+  [email]: https://cpco.io/email?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=email
+  [commercial_support]: https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=commercial_support
+  [we_love_open_source]: https://cpco.io/we-love-open-source?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=we_love_open_source
+  [terraform_modules]: https://cpco.io/terraform-modules?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=terraform_modules
   [readme_header_img]: https://cloudposse.com/readme/header/img
-  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=readme_header_link
+  [readme_header_link]: https://cloudposse.com/readme/header/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=readme_header_link
   [readme_footer_img]: https://cloudposse.com/readme/footer/img
-  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=readme_footer_link
+  [readme_footer_link]: https://cloudposse.com/readme/footer/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=readme_footer_link
   [readme_commercial_support_img]: https://cloudposse.com/readme/commercial-support/img
-  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-typescript-template&utm_content=readme_commercial_support_link
-  [share_twitter]: https://twitter.com/intent/tweet/?text=github-action-typescript-template&url=https://github.com/cloudposse/github-action-typescript-template
-  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=github-action-typescript-template&url=https://github.com/cloudposse/github-action-typescript-template
-  [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudposse/github-action-typescript-template
-  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudposse/github-action-typescript-template
-  [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/github-action-typescript-template
-  [share_email]: mailto:?subject=github-action-typescript-template&body=https://github.com/cloudposse/github-action-typescript-template
-  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/github-action-typescript-template?pixel&cs=github&cm=readme&an=github-action-typescript-template
+  [readme_commercial_support_link]: https://cloudposse.com/readme/commercial-support/link?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-string-transformer&utm_content=readme_commercial_support_link
+  [share_twitter]: https://twitter.com/intent/tweet/?text=github-action-string-transformer&url=https://github.com/cloudposse/github-action-string-transformer
+  [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=github-action-string-transformer&url=https://github.com/cloudposse/github-action-string-transformer
+  [share_reddit]: https://reddit.com/submit/?url=https://github.com/cloudposse/github-action-string-transformer
+  [share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/cloudposse/github-action-string-transformer
+  [share_googleplus]: https://plus.google.com/share?url=https://github.com/cloudposse/github-action-string-transformer
+  [share_email]: mailto:?subject=github-action-string-transformer&body=https://github.com/cloudposse/github-action-string-transformer
+  [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/cloudposse/github-action-string-transformer?pixel&cs=github&cm=readme&an=github-action-string-transformer
 <!-- markdownlint-restore -->

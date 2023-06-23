@@ -5,13 +5,12 @@
 #
 
 # Name of this project
-name: github-action-typescript-template
+name: github-action-string-transformer
 
 # Tags of this project
 tags:
   - github-action
   - typescript
-  - template
 
 # Logo for this project
 #logo: docs/logo.png
@@ -20,13 +19,15 @@ tags:
 license: "APACHE2"
 
 # Canonical GitHub repo
-github_repo: cloudposse/github-action-typescript-template
+github_repo: cloudposse/github-action-string-transformer
+
+config: {}
 
 # Badges to display
 badges:
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/github-action-typescript-template.svg"
-    url: "https://github.com/cloudposse/github-action-typescript-template/releases/latest"
+    image: "https://img.shields.io/github/release/cloudposse/github-action-string-transformer.svg"
+    url: "https://github.com/cloudposse/github-action-string-transformer/releases/latest"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
@@ -34,10 +35,11 @@ badges:
 related: []
 
 # Short description of this project
-description: Template repo for GitHub Actions written in TypeScript
+description: |
+  A helper for transforming strings in GitHub Actions
 
 introduction: |-
-  This repo is a template for GitHub Actions written in TypeScript.
+  This is a GitHub Action that can be used to transform strings in GitHub Actions. 
 references:
   - name: "github-actions-workflows"
     description: "Reusable workflows for different types of projects"
@@ -48,11 +50,40 @@ references:
 
 # How to use this project
 usage: |
-  Use this repository as a template in your own GitHub Action project to get started.
+  
+    ```yaml
+      - name: Action Lowercase
+        id: lowercase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'lowercase'
+          input-string: 'Hello World'
+          
+      - name: Action UpperCase
+        id: uppercase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'uppercase'
+          input-string: 'Hello World'
+          
+      - name: Action Kebabcase
+        id: kebabcase
+        uses: ./ # Uses an action in the root directory
+        with:
+          operation: 'kebabcase'
+          input-string: 'Hello World'
+    ```
+  
+  Then Fetch the result with:
+      
+     ```yaml
+        - name: Get the output
+          run: echo "The output was ${{ steps.lowercase.outputs.output-string }}"
+     ```  
 
 include:
 
 # Contributors to this project
 contributors:
-  - name: "Matt Calhoun"
-    github: "mcalhoun"
+  - name: "Benjamin Smith"
+    github: "Benbentwo"
