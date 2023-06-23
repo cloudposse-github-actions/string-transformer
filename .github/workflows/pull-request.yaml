@@ -78,7 +78,6 @@ jobs:
           input-string: 'Hello World'
       
       - name: Check Outputs
-        if: ${{ steps.get_line_rate.outputs.lineRate < 0.9 }}
         uses: actions/github-script@v3
         with:
           script: |

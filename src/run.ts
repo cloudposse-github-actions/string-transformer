@@ -1,7 +1,7 @@
 import * as core from "@actions/core";
-import { lowercase } from "./operations/lowercase";
-import { uppercase } from "./operations/uppercase";
-import { kebabcase } from "./operations/kebabcase";
+import {lowercase} from "./operations/lowercase";
+import {uppercase} from "./operations/uppercase";
+import {kebabcase} from "./operations/kebabcase";
 import {dnsSubdomain} from "./operations/dns-subdomain";
 
 export async function run() {
@@ -9,9 +9,9 @@ export async function run() {
     const operation: string = core.getInput("operation");
     const inputString: string = core.getInput("input-string");
     let maxLength: number = parseInt(core.getInput("max-length"), 10);
-    
+
     let outputString = "";
-    
+
     switch (operation) {
       case "lowercase":
         outputString = lowercase(inputString);
