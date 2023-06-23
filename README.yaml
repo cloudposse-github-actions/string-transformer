@@ -11,7 +11,6 @@ name: github-action-string-transformer
 tags:
   - github-action
   - typescript
-  - template
 
 # Logo for this project
 #logo: docs/logo.png
@@ -21,6 +20,8 @@ license: "APACHE2"
 
 # Canonical GitHub repo
 github_repo: cloudposse/github-action-string-transformer
+
+config: {}
 
 # Badges to display
 badges:
