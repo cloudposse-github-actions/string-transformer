@@ -67,21 +67,21 @@ This is a GitHub Action that can be used to transform strings in GitHub Actions.
 ```yaml
   - name: Action Lowercase
     id: lowercase
-    uses: cloudposse/string-transformer@main
+    uses: cloudposse/github-action-string-transformer@main
     with:
       operation: 'lowercase'
       input-string: 'Hello World'
       
   - name: Action UpperCase
     id: uppercase
-    uses: cloudposse/string-transformer@main
+    uses: cloudposse/github-action-string-transformer@main
     with:
       operation: 'uppercase'
       input-string: 'Hello World'
       
   - name: Action Kebabcase
     id: kebabcase
-    uses: cloudposse/string-transformer@main
+    uses: cloudposse/github-action-string-transformer@main
     with:
       operation: 'kebabcase'
       input-string: 'Hello World'
