@@ -1,4 +1,4 @@
-name: "github-actions-string-transformer"
+name: "string-transformer"
 description: "A helper for transforming strings in GitHub Actions"
 author: "@cloudposse"
 branding:

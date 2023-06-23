@@ -67,21 +67,21 @@ This is a GitHub Action that can be used to transform strings in GitHub Actions.
 ```yaml
   - name: Action Lowercase
     id: lowercase
-    uses: ./ # Uses an action in the root directory
+    uses: cloudposse/string-transformer@main
     with:
       operation: 'lowercase'
       input-string: 'Hello World'
       
   - name: Action UpperCase
     id: uppercase
-    uses: ./ # Uses an action in the root directory
+    uses: cloudposse/string-transformer@main
     with:
       operation: 'uppercase'
       input-string: 'Hello World'
       
   - name: Action Kebabcase
     id: kebabcase
-    uses: ./ # Uses an action in the root directory
+    uses: cloudposse/string-transformer@main
     with:
       operation: 'kebabcase'
       input-string: 'Hello World'
@@ -253,12 +253,12 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 ### Contributors
 
 <!-- markdownlint-disable -->
-|  [![Matt Calhoun][mcalhoun_avatar]][mcalhoun_homepage]<br/>[Matt Calhoun][mcalhoun_homepage] |
-|---|
+| [![Benjamin Smith][benbentwo_avatar]][benbentwo_homepage]<br/>[Benjamin Smith][benbentwo_homepage] |
+|----------------------------------------------------------------------------------------------------|
 <!-- markdownlint-restore -->
 
-  [mcalhoun_homepage]: https://github.com/mcalhoun
-  [mcalhoun_avatar]: https://img.cloudposse.com/150x150/https://github.com/mcalhoun.png
+  [benbentwo_homepage]: https://github.com/benbentwo
+  [benbentwo_avatar]: https://img.cloudposse.com/150x150/https://github.com/benbentwo.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
