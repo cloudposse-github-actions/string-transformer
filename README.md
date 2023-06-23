@@ -64,35 +64,35 @@ This is a GitHub Action that can be used to transform strings in GitHub Actions.
 
 ## Usage
 
-    ```yaml
-      - name: Action Lowercase
-        id: lowercase
-        uses: ./ # Uses an action in the root directory
-        with:
-          operation: 'lowercase'
-          input-string: 'Hello World'
-          
-      - name: Action UpperCase
-        id: uppercase
-        uses: ./ # Uses an action in the root directory
-        with:
-          operation: 'uppercase'
-          input-string: 'Hello World'
-          
-      - name: Action Kebabcase
-        id: kebabcase
-        uses: ./ # Uses an action in the root directory
-        with:
-          operation: 'kebabcase'
-          input-string: 'Hello World'
-    ```
+```yaml
+  - name: Action Lowercase
+    id: lowercase
+    uses: ./ # Uses an action in the root directory
+    with:
+      operation: 'lowercase'
+      input-string: 'Hello World'
+      
+  - name: Action UpperCase
+    id: uppercase
+    uses: ./ # Uses an action in the root directory
+    with:
+      operation: 'uppercase'
+      input-string: 'Hello World'
+      
+  - name: Action Kebabcase
+    id: kebabcase
+    uses: ./ # Uses an action in the root directory
+    with:
+      operation: 'kebabcase'
+      input-string: 'Hello World'
+```
 
 Then Fetch the result with:
 
-     ```yaml
-        - name: Get the output
-          run: echo "The output was ${{ steps.lowercase.outputs.output-string }}"
-     ```  
+```yaml
+  - name: Get the output
+    run: echo "The output was ${{ steps.lowercase.outputs.output-string }}"
+```  
 
 
 
