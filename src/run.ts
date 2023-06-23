@@ -20,7 +20,6 @@ export async function run() {
         outputString = kebabcase(inputString);
         break;
       default:
-        core.error(`Invalid operation: ${operation}`)
         core.setFailed(`Invalid operation: ${operation}`)
     }
 
