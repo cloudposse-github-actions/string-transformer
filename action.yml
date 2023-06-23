@@ -1,6 +1,9 @@
 name: "github-actions-string-transformer"
 description: "A helper for transforming strings in GitHub Actions"
-author: "Cloud Posse"
+author: "@cloudposse"
+branding:
+  icon: 'cloud'
+  color: 'white'
 inputs:
   operation:
     required: true
