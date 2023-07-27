@@ -1,8 +1,8 @@
 import * as core from "@actions/core";
-import {lowercase} from "./operations/lowercase";
-import {uppercase} from "./operations/uppercase";
-import {kebabcase} from "./operations/kebabcase";
-import {dnsSubdomain} from "./operations/dns-subdomain";
+import { lowercase } from "./operations/lowercase";
+import { uppercase } from "./operations/uppercase";
+import { kebabcase } from "./operations/kebabcase";
+import { dnsSubdomain } from "./operations/dns-subdomain";
 
 export async function run() {
   try {
@@ -23,10 +23,10 @@ export async function run() {
         outputString = kebabcase(inputString);
         break;
       case "dns-subdomain":
-        outputString = dnsSubdomain(inputString, maxLength)
+        outputString = dnsSubdomain(inputString, maxLength);
         break;
       default:
-        core.setFailed(`Invalid operation: ${operation}`)
+        core.setFailed(`Invalid operation: ${operation}`);
     }
 
     if (maxLength > 0 && outputString.length > maxLength) {
