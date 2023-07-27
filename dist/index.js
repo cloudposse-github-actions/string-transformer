@@ -2845,13 +2845,35 @@ function uppercase(str) {
 }
 
 ;// CONCATENATED MODULE: ./src/operations/kebabcase.ts
+
 function kebabcase(str) {
+    const string1 = str.replace(/([a-z])([A-Z])/g, "$1-$2");
+    console.log("string1: " + string1);
+    core.debug("string1: " + string1);
+    const string2 = string1.replace(/[\s_/]+/g, '-');
+    console.debug("string2: " + string2);
+    core.info("string2: " + string2);
+    const string3 = string2.toLowerCase();
+    console.debug("string3: " + string3);
     return str.replace(/([a-z])([A-Z])/g, "$1-$2")
-        .replace(/[\s_]+/g, '-')
-        .toLowerCase();
+        //eslint-disable-next-line no-useless-escape
+        .replace(/[\s_/]+/g, '-')
+        .toLowerCase().replace('/', '-');
+}
+
+;// CONCATENATED MODULE: ./src/operations/dns-subdomain.ts
+
+function dnsSubdomain(str, maxLength = 63) {
+    str = kebabcase(str);
+    maxLength = maxLength < 1 ? 63 : maxLength;
+    str = str.substring(0, maxLength);
+    if (str.endsWith("-"))
+        str = str.substring(0, str.length - 1);
+    return str;
 }
 
 ;// CONCATENATED MODULE: ./src/run.ts
+
 
 
 
@@ -2860,7 +2882,7 @@ async function run() {
     try {
         const operation = core.getInput("operation");
         const inputString = core.getInput("input-string");
-        const maxLenth = parseInt(core.getInput("max-length"), 10);
+        let maxLength = parseInt(core.getInput("max-length"), 10);
         let outputString = "";
         switch (operation) {
             case "lowercase":
@@ -2872,10 +2894,16 @@ async function run() {
             case "kebabcase":
                 outputString = kebabcase(inputString);
                 break;
+            case "dns-subdomain":
+                outputString = dnsSubdomain(inputString, maxLength);
+                break;
+            default:
+                core.setFailed(`Invalid operation: ${operation}`);
         }
-        if (maxLenth > 0 && outputString.length > maxLenth) {
-            outputString = outputString.substring(0, maxLenth);
+        if (maxLength > 0 && outputString.length > maxLength) {
+            outputString = outputString.substring(0, maxLength);
         }
+        core.info(`Output string: ${outputString}`);
         core.setOutput("output-string", outputString);
     }
     catch (error) {
