@@ -33,6 +33,7 @@ export async function run() {
       outputString = outputString.substring(0, maxLength);
     }
 
+    core.info(`Output string: ${outputString}`);
     core.setOutput("output-string", outputString);
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message);
