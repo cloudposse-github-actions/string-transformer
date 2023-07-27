@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ["self-hosted"]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -60,7 +60,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
         with:
           operation: 'kebabcase'
-          input-string: 'Hello World'
+          input-string: 'Hello World feature/UI-123_my-feature'
       
       - name: Test Action DNS Subdomain
         id: dns-subdomain
@@ -89,7 +89,7 @@ jobs:
               core.setFailed('Uppercase test failed')
             }
             
-            if('${{steps.kebabcase.outputs.output-string}}' !== 'hello-world') {
+            if('${{steps.kebabcase.outputs.output-string}}' !== 'hello-world-feature-ui-123-my-feature') {
               core.setFailed('Kebabcase test failed')
             }
 
