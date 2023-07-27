@@ -2847,11 +2847,23 @@ function uppercase(str) {
 ;// CONCATENATED MODULE: ./src/operations/kebabcase.ts
 function kebabcase(str) {
     return str.replace(/([a-z])([A-Z])/g, "$1-$2")
-        .replace(/[\s_]+/g, '-')
+        .replace(/[\s_/]+/g, '-')
         .toLowerCase();
 }
 
+;// CONCATENATED MODULE: ./src/operations/dns-subdomain.ts
+
+function dnsSubdomain(str, maxLength = 63) {
+    str = kebabcase(str);
+    maxLength = maxLength < 1 ? 63 : maxLength;
+    str = str.substring(0, maxLength);
+    if (str.endsWith("-"))
+        str = str.substring(0, str.length - 1);
+    return str;
+}
+
 ;// CONCATENATED MODULE: ./src/run.ts
+
 
 
 
@@ -2860,7 +2872,7 @@ async function run() {
     try {
         const operation = core.getInput("operation");
         const inputString = core.getInput("input-string");
-        const maxLenth = parseInt(core.getInput("max-length"), 10);
+        let maxLength = parseInt(core.getInput("max-length"), 10);
         let outputString = "";
         switch (operation) {
             case "lowercase":
@@ -2872,10 +2884,16 @@ async function run() {
             case "kebabcase":
                 outputString = kebabcase(inputString);
                 break;
+            case "dns-subdomain":
+                outputString = dnsSubdomain(inputString, maxLength);
+                break;
+            default:
+                core.setFailed(`Invalid operation: ${operation}`);
         }
-        if (maxLenth > 0 && outputString.length > maxLenth) {
-            outputString = outputString.substring(0, maxLenth);
+        if (maxLength > 0 && outputString.length > maxLength) {
+            outputString = outputString.substring(0, maxLength);
         }
+        core.info(`Output string: ${outputString}`);
         core.setOutput("output-string", outputString);
     }
     catch (error) {
