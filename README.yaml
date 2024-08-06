@@ -19,15 +19,15 @@ tags:
 license: "APACHE2"
 
 # Canonical GitHub repo
-github_repo: cloudposse/github-action-string-transformer
+github_repo: cloudposse-github-actions/string-transformer
 
 config: {}
 
 # Badges to display
 badges:
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/github-action-string-transformer.svg"
-    url: "https://github.com/cloudposse/github-action-string-transformer/releases/latest"
+    image: "https://img.shields.io/github/v/release/cloudposse-github-actions/string-transformer.svg"
+    url: "https://github.com/cloudposse-github-actions/string-transformer/releases/latest"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"
